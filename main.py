@@ -74,9 +74,10 @@ text = TEXTS[index]
 # //// Rozdělení textu na slova + odstranění čárek a teček ////
 words = [w.strip(".,") for w in text.split()]
 
-# Výpočet základních statistik
+# //// Výpočet základních statistik ////
 num_words = len(words)                            # celkový počet slov
 titlecase_words = sum(1 for w in words if w.istitle())  # slova začínající velkým písmenem
+# !!! for w in words → pro každé slovo v seznamu words !!!
 uppercase_words = sum(1 for w in words if w.isupper())  # slova psaná VELKÝMI písmeny
 lowercase_words = sum(1 for w in words if w.islower())  # slova psaná malými písmeny
 numeric_strings = [w for w in words if w.isdigit()]     # číselné řetězce
