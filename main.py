@@ -1,5 +1,9 @@
-# main.py
-# Projekt 2: Textový analyzátor
+"""
+main.py: první projekt do Engeto Online Python Akademie
+
+author: Monika Mendlíková
+email: mendlikova.monika@gmail.com
+"""
 
 USERS = {
     "bob": "123",
@@ -8,7 +12,6 @@ USERS = {
     "liz": "pass123",
 }
 
-# Tři předpřipravené texty k analýze
 TEXTS = [
     '''Situated about 10 miles west of Kemmerer,
     Fossil Butte is a ruggedly impressive
