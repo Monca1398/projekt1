@@ -45,39 +45,39 @@ SEPARATOR = "-" * 40
 username = input("username: ")
 password = input("password: ")
 
-# Kontrola, zda jméno i heslo odpovídají správné dvojici
+#Kontrola, zda jméno i heslo odpovídají správné dvojici
 if USERS.get(username) != password:
     print("unregistered user, terminating the program..")
     exit()
 
-# Pokud je přihlášení úspěšné
+#Pokud je přihlášení úspěšné
 print(SEPARATOR)
 print(f"Welcome to the app, {username}")
 print(f"We have {len(TEXTS)} texts to be analyzed.")
 print(SEPARATOR)
 
-# Výběr textu
+#Výběr textu
 choice = input(f"Enter a number btw. 1 and {len(TEXTS)} to select: ")
 
-# Kontrola, zda vstup je číslo
+#Kontrola, zda vstup je číslo
 if not choice.isdigit():
     print("Invalid input, terminating the program..")
     exit()
 
-# Převedení vstupu na index (od 0)
+#Převedení vstupu na index (od 0)
 index = int(choice) - 1
 
-# Kontrola, zda index spadá do rozsahu textů
+#Kontrola, zda index spadá do rozsahu textů
 if index not in range(len(TEXTS)):
     print("Number out of range, terminating the program..")
     exit()
 
 text = TEXTS[index]
 
-# Rozdělení textu na slova + odstranění čárek a teček
+#Rozdělení textu na slova + odstranění čárek a teček
 words = [w.strip(".,") for w in text.split()]
 
-# Výpočet základních statistik
+#Výpočet základních statistik
 num_words = len(words)                            # celkový počet slov
 titlecase_words = sum(1 for w in words if w.istitle())  # slova začínající velkým písmenem
 # !!! for w in words → pro každé slovo v seznamu words !!!
@@ -86,7 +86,7 @@ lowercase_words = sum(1 for w in words if w.islower())  # slova psaná malými p
 numeric_strings = [w for w in words if w.isdigit()]     # číselné řetězce
 sum_numbers = sum(int(n) for n in numeric_strings)      # součet čísel
 
-# Výpis statistik
+#Výpis statistik
 print(SEPARATOR)
 print(f"There are {num_words} words in the selected text.")
 print(f"There are {titlecase_words} titlecase words.")
@@ -95,17 +95,17 @@ print(f"There are {lowercase_words} lowercase words.")
 print(f"There are {len(numeric_strings)} numeric strings.")
 print(f"The sum of all the numbers {sum_numbers}")
 
-# Sloupcový graf
+#Sloupcový graf
 print(SEPARATOR)
 print(f"{'LEN':>3}|{'OCCURRENCES':^20}|NR.")
 print(SEPARATOR)
 
-# Slovník: délka slova -> počet výskytů
+#Slovník: délka slova -> počet výskytů
 lengths = {}
 for w in words:
     lengths[len(w)] = lengths.get(len(w), 0) + 1
 
-# Výpis grafu (seřazený podle délky slova)
+#Výpis grafu (seřazený podle délky slova)
 for length in sorted(lengths):
     stars = "*" * lengths[length]
     print(f"{length:>3}|{stars:<20}|{lengths[length]}")
